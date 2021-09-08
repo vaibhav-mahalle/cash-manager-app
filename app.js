@@ -11,7 +11,13 @@ const notes =[2000,500,100,20,10,5,1];
 checkButton.addEventListener("click",function validateBillandCashAmount()
 {
    message.style.display = "none";
-  if(billAmount.value>0)
+
+
+  if(billAmount.value<=0 || cashGiven.value<=0 )
+  {
+    errorMessage("Sorry. Either bill or cash is less than or equal to zero");
+  }
+  else
   {
     if(cashGiven.value >= billAmount.value)
     {
@@ -19,13 +25,10 @@ checkButton.addEventListener("click",function validateBillandCashAmount()
         calculateChange(amountToBeReturned);
     }
     else{
-          errorMessage("are you comedy me?");
+          errorMessage("Sorry you need to pay atleast equal to bill.");
     }
   }
-  else
-  {
-    errorMessage("Bill should be greater than 0");
-  }
+ 
 });
 
 function errorMessage(_something)
